@@ -1,35 +1,41 @@
 ------------------------------------------------------------------- ADMIN --------------------------------------------------------------
 
 Admin Home Page
-![Screenshot 2025-06-25 102346](https://github.com/user-attachments/assets/40b3fd79-2790-40ce-bd00-7982158a986e)
+![Screenshot 2025-06-25 102346](https://github.com/user-attachments/assets/47a58d43-c188-4c6d-884c-da707f2881a4)
 
 Product Page
-![Screenshot 2025-06-25 102355](https://github.com/user-attachments/assets/9ab6f472-1364-44d2-a19f-8598413b76b8)
+![Screenshot 2025-06-25 102355](https://github.com/user-attachments/assets/f2debc24-9d2c-49d5-9423-457d217292e8)
 
 Add Product
-![Screenshot 2025-06-25 104221](https://github.com/user-attachments/assets/a217228a-d773-4bdd-897a-3f310f7e8127)
+![Screenshot 2025-06-25 104221](https://github.com/user-attachments/assets/a9ad13c9-5bc6-43df-beb0-0f1c552c6254)
 
 Category 
-![Screenshot 2025-06-25 102405](https://github.com/user-attachments/assets/17ddf073-e245-4c31-ba1c-252d32217dc0)
+![Screenshot 2025-06-25 102405](https://github.com/user-attachments/assets/0a9b38e2-d653-4e53-9220-ccfb3e3588f5)
+
 
 Orders
-![Screenshot 2025-06-25 104527](https://github.com/user-attachments/assets/4a8396bb-a951-4259-a309-a047fb639be8)
+![Screenshot 2025-06-25 102428](https://github.com/user-attachments/assets/eca5170b-80e8-47b7-9652-7f7b7494d8df)
+
 
 Orders Item
-![Screenshot 2025-06-25 102435](https://github.com/user-attachments/assets/76a73849-1ce2-4756-9a91-ed9b5623a30f)
+![Screenshot 2025-06-25 102435](https://github.com/user-attachments/assets/7d6b18f8-fb9f-4734-a771-c6b3f7257314)
+
 
 
 ------------------------------------------------------------------- USER -------------------------------------------------------------
 
 Home Page
-![Screenshot 2025-06-25 102130](https://github.com/user-attachments/assets/4ec4a9c9-5b97-43d0-be0f-5ec896d99866)
+![Screenshot 2025-06-25 102130](https://github.com/user-attachments/assets/b9f503da-aee1-4d6d-a1bc-d2278e7ddce6)
+
 
 Products
-![Screenshot 2025-06-25 102144](https://github.com/user-attachments/assets/8563d54c-64ad-4b49-b8f9-bd0fb4ce494c)
+![Screenshot 2025-06-25 102144](https://github.com/user-attachments/assets/787fc22f-23cf-4c82-b03d-9b51b07fb81b)
+
 
 User Cart
-![Screenshot 2025-06-25 102200](https://github.com/user-attachments/assets/1010ac2c-6e58-46e5-b373-7dc60317a67b)
+![Screenshot 2025-06-25 102200](https://github.com/user-attachments/assets/7b168167-22bc-4c7c-86bf-e22d4dcd5a20)
+
 
 Order
-![Screenshot 2025-06-25 102324](https://github.com/user-attachments/assets/5040b200-1a4e-41d3-92d0-f17a568b108f)
+![Screenshot 2025-06-25 102324](https://github.com/user-attachments/assets/28a27a86-1ef7-40cc-9514-da4b55e8c684)
 
