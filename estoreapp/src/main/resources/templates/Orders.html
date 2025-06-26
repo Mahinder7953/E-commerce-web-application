@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Orders - Dashboard</title>
+    <style>
+        :root {
+            --bg-color: #181818;
+            --card-color: #222;
+            --accent-color: #00e676;
+            --text-color: #e0e0e0;
+            --muted-color: #999;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+            background-color: var(--card-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            color: var(--accent-color);
+        }
+
+        table {
+            width: 50%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background-color: var(--card-color);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        }
+
+        th,
+        td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        th {
+            background-color: #1a1a1a;
+            color: var(--accent-color);
+        }
+
+        tr:hover {
+            background-color: #2a2a2a;
+        }
+
+        .action-button {
+            background-color: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 6px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-button:hover {
+            background-color: var(--accent-color);
+            color: #000;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #1E1E1E;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 3px 10px rgba(255, 255, 255, 0.1);
+            transition: background 0.3s;
+        }
+
+        .navbar:hover {
+            background: #252525;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        .nav-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+
+        /* Call-to-Action Links */
+        a {
+            background: linear-gradient(135deg, #FFCC00, #FFA500);
+            color: black;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 20px;
+            /* Adjust spacing */
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        a:hover {
+            background: linear-gradient(135deg, #FFA500, #FFCC00);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">E Store</div>
+        <div class="nav-links">
+            <a href="/Admin">Home</a>
+            <a href="/Admin/Products">Products</a>
+            <a href="/Admin/Categories">Categories</a>
+            <a href="/Admin/Orders">Orders</a>
+        </div>
+    </nav>
+    <header>
+        <h1>Admin Orders</h1>
+    </header>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Total</th>
+                <th>Actions</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="order : ${Orders}">
+                <td th:text="${order.id}">ORD002</td>
+                <!-- <td th:text="${order.customerName}">Priya Mehta</td> -->
+                <td th:text="${#dates.format(order.date, 'dd MMM yyyy')}">22 Jun 2025</td>
+                <td th:text="|₹ ${order.total}|">₹1,499.00</td>
+                <td>
+                    <a th:href="@{/Admin/Orders/{id}(id=${order.id})}">VIEW</a>
+                </td>
+
+                <!-- <td th:text="${order.status}">Delivered</td> -->
+                <td>
+                    <form th:action="@{/Admin/Orders/updateStatus/{id}(id=${order.id})}" method="post">
+                        <select name="status" class="form-select">
+                            <option th:value="'PENDING'" th:selected="${order.status == 'PENDING'}">Pending</option>
+                            <option th:value="'SHIPPED'" th:selected="${order.status == 'SHIPPED'}">Shipped</option>
+                            <option th:value="'DELIVERED'" th:selected="${order.status == 'DELIVERED'}">Delivered
+                            </option>
+                        </select>
+                        <button type="submit" class="btn btn-primary mt-2">Update</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

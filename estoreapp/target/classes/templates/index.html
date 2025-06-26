@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Showcase</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* General Styles */
+        body {
+            background: #121212;
+            color: #E0E0E0;
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #1E1E1E;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 3px 10px rgba(255, 255, 255, 0.1);
+            transition: background 0.3s;
+        }
+
+        .navbar:hover {
+            background: #252525;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        .nav-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            padding: 40px;
+            text-align: center;
+            align-self: center;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            /* Centers content */
+            flex-wrap: wrap;
+        }
+
+        .card-body {
+            padding: 10px;
+        }
+
+        /* Form Elements */
+        form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        option {
+            width: 70%;
+        }
+
+        input,
+        select {
+            background: #1E1E1E;
+            border: 1px solid #FFD700;
+            color: #E0E0E0;
+            padding: 10px;
+            border-radius: 5px;
+            transition: border 0.3s;
+        }
+
+        input:focus,
+        select:focus {
+            border: 1px solid #FFA500;
+        }
+
+        /* Buttons */
+        button {
+            background: linear-gradient(135deg, #FFCC00, #FFA500);
+            color: black;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #FFA500, #FFCC00);
+            transform: scale(1.1);
+        }
+
+        /* Product Grid */
+        .grid-container {
+            display: grid;
+            /* grid-template-columns: repeat(auto-fit, minmax(230px, 3fr));  */
+            grid-template-columns: repeat(4, 1fr);
+            /* Always 4 columns */
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        /* Product Card */
+        .card {
+            background: #1E1E1E;
+            border-radius: 12px;
+            padding: 10px;
+            box-shadow: 0px 6px 15px rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.1);
+            background: #252525;
+        }
+
+        /* Text Styling */
+        .card-title {
+            font-size: 1.4rem;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #B0B0B0;
+            margin: 8px 0;
+        }
+
+        /* Call-to-Action Links */
+        a {
+            background: linear-gradient(135deg, #FFCC00, #FFA500);
+            color: black;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 20px;
+            /* Adjust spacing */
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        a:hover {
+            background: linear-gradient(135deg, #FFA500, #FFCC00);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">E Store</div>
+        <div class="nav-links">
+            <a href="/Admin">Home</a>
+            <a href="/Admin/Products">Products</a>
+            <a href="/Admin/Categories">Categories</a>
+            <a href="/Admin/Orders">Orders</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h2 class="text-center">Our Products</h2>
+        <form th:action="@{/Admin/Products}" method="get">
+            <input type="text" name="query" class="form-control me-2" placeholder="Search Products" required>
+            <button type="submit" class="btn btn-warning">Search</button>
+        </form>
+        <form th:action="@{/Admin/Products}" method="get" th:Object="${categories}">
+
+            <select name="categoryId" class="form-select me-2">
+                <option value="">All Categories</option>
+                <option th:each="cat : ${categories}" th:value="${cat.id}" th:text="${cat.name}"></option>
+            </select>
+
+            <button type="submit" class="btn btn-warning">Search</button>
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="container">
+                <a href="/Admin/Products/add">ADD PRODUCT</a>
+            </div>
+            <div class="container">
+                <!-- <h2 class="text-center">Our Products</h2> -->
+                <div class="grid-container">
+                    <div class="card" th:each="Product : ${Products}">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${Product.name}"></h5>
+                            <p class="card-text" th:text="${Product.price}"></p>
+                            <p class="card-text" th:text="${Product.quantity}"></p>
+                            <p><a th:href="@{/Admin/Products/update/{id}(id=${Product.id})}">UPDATE</a>
+                                <a th:href="@{/Admin/Products/delete/{id}(id=${Product.id})}">DELETE</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

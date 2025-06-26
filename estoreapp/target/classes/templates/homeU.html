@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Navbar styling */
+        .navbar {
+            background-color: #6d873a;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Navbar links */
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect */
+        .navbar a:hover {
+            background-color: #5e3fda;
+            border-radius: 5px;
+        }
+
+        /* Logo */
+        .navbar .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Center nav items */
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        /*  */
+
+        /*  */
+        body {
+            background-color: #403f3f;
+            color: #e0e0e0;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Styling the link as a button */
+        a {
+            display: inline-block;
+            padding: 12px 20px;
+            color: #ffffff;
+            background-color: #333;
+            border: 2px solid #555;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 6px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Hover effect */
+        a:hover {
+            background-color: #555;
+            border-color: #777;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        /*  */
+        .center-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* full viewport height */
+            background-color: #0f2027;
+            /* optional background */
+        }
+
+        .glow-heading {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #00d1ff;
+            text-shadow: 0 0 10px rgba(0, 209, 255, 0.6),
+                0 0 20px rgba(0, 209, 255, 0.5);
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            padding: 20px 40px;
+            border-radius: 12px;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .glow-heading:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <!--  -->
+    <nav class="navbar">
+        <div class="logo">E Store</div>
+        <div class="nav-links">
+            <!-- <a href="/">Home</a> -->
+            <a href="/Products">Products</a>
+            <a href="/Carts">Cart</a>
+            <a href="/Orders">Orders</a>
+        </div>
+    </nav>
+
+    <!--  -->
+    <div class="center-wrapper">
+        <h1 class="glow-heading">HELLO, USER</h1>
+    </div>
+</body>
+
+</html>

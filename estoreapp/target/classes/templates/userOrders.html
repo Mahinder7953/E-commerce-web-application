@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>E Store | Orders</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: #f1f1f1;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .nav-links a {
+            color: #cccccc;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .page-title {
+            text-align: center;
+            margin: 2rem 0 1rem;
+            font-size: 2rem;
+            color: #ffffff;
+        }
+
+        .orders-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .order-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.3);
+        }
+
+        .order-header, .order-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #81ecec;
+        }
+
+        .order-items {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1rem;
+        }
+
+        .order-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: #f1f1f1;
+        }
+
+        @media (max-width: 600px) {
+            .order-card {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">E Store</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/Products">Products</a>
+            <a href="/Carts">Cart</a>
+            <!-- <a href="/Orders">Orders</a> -->
+        </div>
+    </nav>
+
+    <main>
+    <h1 class="page-title">Your Orders</h1>
+    <section class="orders-list">
+        <article class="order-card" th:each="order : ${Orders}">
+            <header class="order-header">
+                <span th:text="'Order #' + ${order.id}">Order #12345</span>
+                <span th:text="${order.status}">Shipped</span>
+            </header>
+
+            <ul class="order-items">
+                <li class="order-item"
+                    th:each="item : ${order.OrderItems}"
+                    th:text="${item.product.name} + ' x' + ${item.quantity} + ' - ₹' + ${item.amount}">
+                    Product xQty - ₹Amount
+                </li>
+            </ul>
+
+
+            <footer class="order-footer">
+                <span th:text="'Total: ₹' + ${order.total}">Total: ₹1499</span>
+                <span th:text="${order.date}">2025-06-23</span>
+            </footer>
+        </article>
+    </section>
+</main>
+
+</body>
+</html>

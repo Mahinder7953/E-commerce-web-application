@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Product Showcase</title>
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: "Arial", sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #ffcc00;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .product-card {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 15px;
+            max-width: 300px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .card {
+            width: 360px;
+        }
+
+        button {
+            background-color: #ffcc00;
+            color: black;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #ffa500;
+        }
+
+        /*  */
+        /* Navbar styling */
+        .navbar {
+            background-color: #6d873a;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Navbar links */
+        .navbar a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect */
+        .navbar a:hover {
+            background-color: #5e3fda;
+            border-radius: 5px;
+        }
+
+        /* Logo */
+        .navbar .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Center nav items */
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        /*  */
+
+        /*  */
+        body {
+            background-color: #403f3f;
+            color: #e0e0e0;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Styling the link as a button */
+        a {
+            display: inline-block;
+            padding: 12px 20px;
+            color: #ffffff;
+            background-color: #333;
+            border: 2px solid #555;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 6px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Hover effect */
+        a:hover {
+            background-color: #555;
+            border-color: #777;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        h3 {
+            color: #5e3fda;
+        }
+
+        h4 {
+            color: green;
+        }
+
+        input,
+        select {
+            background: #1E1E1E;
+            border: 1px solid #FFD700;
+            color: #E0E0E0;
+            padding: 10px;
+            border-radius: 5px;
+            transition: border 0.3s;
+        }
+
+        input:focus,
+        select:focus {
+            border: 1px solid #FFA500;
+        }
+    </style>
+</head>
+
+<body><!--  -->
+    <nav class="navbar">
+        <div class="logo">E Store</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <!-- <a href="/Products">Products</a> -->
+            <a href="/Carts">Cart</a>
+            <a href="/login">LOGIN</a>
+        </div>
+    </nav>
+    <!--  -->
+    <h1>Our Featured Products</h1>
+    <form th:action="@{/Products}" method="get">
+        <input type="text" name="query" class="form-control me-2" placeholder="Search Products" required>
+        <button type="submit" class="btn btn-warning">Search</button>
+    </form>
+    <form th:action="@{/Products}" method="get" th:Object="${categories}">
+
+        <select name="categoryId" class="form-select me-2">
+            <option value="">All Categories</option>
+            <option th:each="cat : ${categories}" th:value="${cat.id}" th:text="${cat.name}"></option>
+        </select>
+
+        <button type="submit" class="btn btn-warning">Search</button>
+    </form>
+    <div class="container">
+        <h2 class="text-center">Our Products</h2>
+        <div class="product-container">
+            <div class="card" th:each="Product : ${Products}">
+                <div class="product-card">
+                    <h3 class="card-title" th:text="${Product.name}"></h3>
+                    <h4 class="card-text" th:text="${Product.price}"></h4>
+                    <p class="card-text" th:text="${Product.quantity}"></p>
+                    <!-- <a th:href="@{/Carts/add/{id}(id=${Product.id})}">Add To Cart</a> -->
+                    <form th:action="@{/Carts/add}" method="post" >
+                        <!-- <input type="hidden" name="id" value="1" /> -->
+                        <input type="hidden" name="productId" th:value="${Product.id}" />
+                        <button type="submit">ADD</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
